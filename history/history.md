@@ -4,7 +4,7 @@
 
 - [しまぶーの IT 大学「歴史から学ぶ JavaScript 前編。ECMAScript、CommonJS、モジュール、名前空間を知ろう」](https://www.youtube.com/watch?v=PuomDgRbllw&list=PLwM1-TnN_NN4SV6DEs4OtfA51Up6XzTfB&index=2&ab_channel=%E3%81%97%E3%81%BE%E3%81%B6%E3%83%BC%E3%81%AEIT%E5%A4%A7%E5%AD%A6)
 - [しまぶーの IT 大学「歴史から学ぶ JavaScript 後編 ① Node.js とパッケージ管理システム npm」](https://www.youtube.com/watch?v=RdFE03K9B08&list=PLwM1-TnN_NN4SV6DEs4OtfA51Up6XzTfB&index=3&ab_channel=%E3%81%97%E3%81%BE%E3%81%B6%E3%83%BC%E3%81%AEIT%E5%A4%A7%E5%AD%A6)
-- [[しまぶーの IT 大学「歴史から学ぶ JavaScript 後編 ② IIFE・AMD モジュールとブラウザ向けパッケージ管理システム Bower」](https://www.youtube.com/watch?v=vuWAhqgRI3M&list=PLwM1-TnN_NN4SV6DEs4OtfA51Up6XzTfB&index=4&ab_channel=%E3%81%97%E3%81%BE%E3%81%B6%E3%83%BC%E3%81%AEIT%E5%A4%A7%E5%AD%A6)
+- [しまぶーの IT 大学「歴史から学ぶ JavaScript 後編 ② IIFE・AMD モジュールとブラウザ向けパッケージ管理システム Bower」](https://www.youtube.com/watch?v=vuWAhqgRI3M&list=PLwM1-TnN_NN4SV6DEs4OtfA51Up6XzTfB&index=4&ab_channel=%E3%81%97%E3%81%BE%E3%81%B6%E3%83%BC%E3%81%AEIT%E5%A4%A7%E5%AD%A6)
 
 ## ECMAScript と JavaScript
 
