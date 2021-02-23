@@ -117,6 +117,88 @@ console.log(foo); // { bar: 456 }
 
 `var` , `let` と `const` に関するまとめとして、**後で変数の初期化を行う予定や、再代入する予定が無いのであれば `const` を使、再代入する場合は `let` を使うべきで、`var` は極力使用すべきでない**ということを確認しておく。
 
+## 分割代入
+
+分割代入とは、配列とオブジェクトを分解して、要素とプロパティの値をひとつひとつ変数に分解するための構文である。
+
+たとえば、分割代入をせずにある配列の各要素を新たな変数に格納するとすれば、下記のように書く必要がある。
+
+```typescript
+var list = [10, 20, 30, 40, 50];
+var item0 = list[0];
+var item1 = list[1];
+var item2 = list[2];
+var item3 = list[3];
+var item4 = list[4];
+```
+
+しかし、分割代入では、下記のような記述が可能となっている。
+
+```typescript
+var list = [10, 20, 30, 40, 50];
+var [item0, item1, item2, item3, item4] = list;
+```
+
+オブジェクトについても、下記のようにして分割代入を行うことができる。
+
+```typescript
+var rect = { x: 0, y: 10, width: 15, height: 20 };
+
+// 分割代入
+var { x, y, width, height } = rect;
+console.log(x, y, width, height); // 0, 10, 15, 20
+
+rect.x = 0;
+// 全体をカッコで囲むことで、既存の変数に代入することもできる
+({ x, y, width, height } = rect);
+console.log(x, y, width, height); // 10,10,15,20
+```
+
+また、展開した変数を新しい変数名に割り当てることもできる。
+
+```typescript
+// オブジェクトの生成
+const obj = { "some property": "some value" };
+
+// 分割
+const { "some property": someProperty } = obj; // const someProperty = obj["some property"] と同義
+console.log(someProperty === "some value"); // true
+```
+
+さらに、分割を使用して、楮帯の深いデータを取得することもできる。
+
+```typescript
+var foo = { bar: { baz: 123 } };
+// var baz = foo.bar.baz と同義
+var {
+  bar: { baz },
+} = foo;
+```
+
+## オブジェクトの分割とスプレッド演算子（Rest パラメータ）
+
+あるオブジェクトから任意の数の要素を取得して、残った要素をスプレッド演算子を使って取得することができる。
+
+```typescript
+var { w, x, ...remaining } = { w: 1, x: 2, y: 3, z: 4 };
+console.log(w, x, remaining); // 1, 2, {y: 3, z: 4}
+```
+
+このようなオブジェクトの分割とスプレッド演算子を使用するケースは、下記のように特定のプロパティを無視するようなときにある。
+
+```typescript
+function goto(point2D: {x: number, y: number}){
+  // 余計なものが含まれたオブジェクトが渡されたら
+  // 正しく動作しないようなコードを想定する
+}
+
+// どこかから取得した Point のオブジェクト
+const point3D = {x: 1, y: 2, z: 3};
+// 余計なプロパティを取り除くための、面白いスプレッド演算子の使い方
+const {z: ...point2D} = point3D;
+goto(point2D);
+```
+
 ## 変数末尾のエクスクラメーション
 
 TypeScript において `foo` という変数に対して直後にエクスクラメーションマークを付加して `foo!` と記述するとき、このエクスクラメーションマーク `!` を "Non-null assertion operator" といい、プログラマがコンパイラに対して、この変数は `undefined` や `null` になることはないということを示すための記述である。なお、この記述は TypeScript が Javascript に変換された後のコードからは削除されるため、コード実行時に違反していても例外などのエラーは発生しない。つまり、コード実行時に `foo` の値が `undefined` や `null` でもエラーは発生しない（ただし、コンパイラから見て `foo` に `undefined` が入ることが明らな場合には、コンパイル時にはエラーになる）。
